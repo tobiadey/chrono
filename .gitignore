@@ -1,0 +1,17 @@
+# Cache files
+__pycache__
+*.pyc
+.#*
+.DS_Store
+.pytest_cache
+
+# virtualenv
+/env
+/.envrc
+
+# Local config overrides
+Makefile.local
+
+# Editors
+.vscode
+.idea
