@@ -170,4 +170,3 @@ Advanced AI Identification
 Snap a photo of any watch, and our AI will instantly identify its brand and provide an estimated market value, thanks to our state-of-the-art machine learning models.
 
 AND MORE!
-# chrono
