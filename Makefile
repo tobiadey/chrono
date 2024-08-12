@@ -1,4 +1,4 @@
-.PHONY: test
+.PHONY: install
 
 # Run unit tests
 test:
@@ -22,19 +22,19 @@ format-black:
 
 format: format-black format-isort
 
-# Start the Core server with debug mode enabled
-server-core:
+# Start the Core server
+server:
 	@echo "Starting Core Server in Development Mode..."
-	@. env/bin/activate; cd app/api; export FLASK_APP=app.py; export FLASK_ENV=development; flask run --port 5001
+	@. env/bin/activate; cd app/backend; export FLASK_APP=app.py; export FLASK_ENV=development; flask run --port 5001
 
-# Start the BFF server with debug mode enabled
-server-bff:
-	@echo "Starting BFF Server in Development Mode..."
-	@. env/bin/activate; cd app/bff; export FLASK_APP=app.py; export FLASK_ENV=development; flask run --port 5000
+# Start the Streamlit server
+run-streamlit:
+	@echo "Starting Streamlit App..."
+	@. env/bin/activate; cd app/chatbot; streamlit run app.py
 
 # Create virtual environment
 venv-create:
-	python3.8 -m venv env
+	python3.12 -m venv env
 
 # Prepare virtual environment
 venv: venv-create

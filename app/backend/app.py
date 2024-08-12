@@ -4,21 +4,19 @@ import os
 import torch
 import torch.nn.functional as F
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from PIL import Image
 from torchvision import transforms
 
 app = Flask(__name__)
-
+CORS(app)
 
 # Set up the path for the classification and regression models
 current_dir = os.path.dirname(__file__)
 classification_model_path = os.path.join(
     current_dir, "../../models/classifier_model.pth"
 )
-regression_model_path = os.path.join(
-    current_dir,
-    "../../models/regression_model.pth",
-)
+regression_model_path = os.path.join(current_dir, "../../models/regression_model.pth")
 
 # Load the models
 classification_model = torch.load(
@@ -26,26 +24,23 @@ classification_model = torch.load(
 )
 classification_model.eval()
 
-regression_model = torch.load(
-    regression_model_path,
-    map_location=torch.device("cpu"),
-)
+regression_model = torch.load(regression_model_path, map_location=torch.device("cpu"))
 regression_model.eval()
 
 CLASSES = [
-    "audemarspiguet",
-    "breitling",
-    "cartier",
-    "gucci",
-    "iwc",
-    "jaegerlecoultre",
-    "movado",
-    "omega",
-    "panerai",
-    "patekphilippe",
-    "rolex",
-    "seiko",
-    "zenith",
+    "Audemars Piguet",
+    "Breitling",
+    "Cartier",
+    "Gucci",
+    "IWC",
+    "Jaegerle Coultre",
+    "Movado",
+    "Omega",
+    "Panerai",
+    "Patek Philippe",
+    "Rolex",
+    "Seiko",
+    "Zenith",
 ]
 
 
@@ -85,4 +80,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(port=5000, debug=True)
